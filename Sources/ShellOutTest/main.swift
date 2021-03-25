@@ -2,7 +2,7 @@ import ShellOut
 import ArgumentParser
 
 struct Command: ParsableCommand {
-    static let configuration = CommandConfiguration(abstract: "Вызов коммнды", subcommands: [Push.self])
+    static let configuration = CommandConfiguration(abstract: "Вызов коммнды", subcommands: [Push.self, Createbrunch.self])
 }
 
 extension Command {
@@ -17,6 +17,15 @@ extension Command {
             try shellOut(to: .gitCommit(message: commitName))
             try shellOut(to: "git push origin \(branch)")
             
+        }
+    }
+    
+    struct Createbrunch: ParsableCommand {
+        @Argument()
+        var branchName: String
+        
+        func run() throws {
+            try shellOut(to: "git checkout -b \(branchName)")
         }
     }
 }
