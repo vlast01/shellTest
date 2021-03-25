@@ -42,9 +42,16 @@ extension Command {
     }
     
     struct Createandopenfile: ParsableCommand {
+        
+        @Argument()
+        var fileName: String
+        
+        @Argument()
+        var text: String
+        
         func run() throws {
-            try shellOut(to: .createFile(named: "file", contents: "Hello world"))
-            try shellOut(to: .openFile(at: "file"))
+            try shellOut(to: .createFile(named: fileName, contents: text))
+            try shellOut(to: .openFile(at: fileName))
         }
     }
 }
