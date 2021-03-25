@@ -20,7 +20,6 @@ extension Command {
         }
     }
     
-    
     struct Createbrunch: ParsableCommand {
         @Argument()
         var branchName: String
