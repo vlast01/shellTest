@@ -6,6 +6,7 @@ import ShellOut
 
 //try shellOut(to: .gitInit())
 try shellOut(to: .gitCommit(message: "A scripted commit!"))
+//try shellOut(to: .gitPush())
 //
 //print(try shellOut(to: "pwd"))
 //print(try shellOut(to: "cd .."))
