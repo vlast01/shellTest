@@ -5,7 +5,7 @@ import ShellOut
 //print(try shellOut(to: .openFile(at: "Project.xcodeproj")))
 
 //try shellOut(to: .gitInit())
-try shellOut(to: .gitCommit(message: "A scripted commit!"))
+try shellOut(to: .gitCommit(message: "A scripted commit2!"))
 //try shellOut(to: .gitPush())
 //
 //print(try shellOut(to: "pwd"))
