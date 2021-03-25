@@ -1,15 +1,21 @@
 import ShellOut
+import ArgumentParser
 
-//try shellOut(to: "echo", arguments: ["Hello world"])
-//try shellOut(to: .buildSwiftPackage())
-//print(try shellOut(to: .openFile(at: "Project.xcodeproj")))
+struct Command: ParsableCommand {
+    static let configuration = CommandConfiguration(abstract: "Вызов коммнды", subcommands: [Push.self])
+}
 
-//try shellOut(to: .gitInit())
-try shellOut(to: .gitCommit(message: "A scripted commit2!"))
-//try shellOut(to: .gitPush())
-//
-//print(try shellOut(to: "pwd"))
-//print(try shellOut(to: "cd .."))
-//print(try shellOut(to: "pwd"))
+extension Command {
+    struct Push: ParsableCommand {
+        @Argument()
+        var commitName: String
+        
+        func run() throws {
+            try shellOut(to: .gitCommit(message: commitName))
+            try shellOut(to: "git push origin master")
+        }
+    }
+}
 
-//try shellOut(to: .createFolder(named: "folder"))
+Command.main()
+
