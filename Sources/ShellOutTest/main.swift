@@ -5,6 +5,7 @@ struct Command: ParsableCommand {
     static let configuration = CommandConfiguration(abstract: "Вызов команды", subcommands: [Push.self, Createbrunch.self, Gitinit.self, Openfile.self, Createandopenfile.self])
 }
 
+
 extension Command {
     struct Push: ParsableCommand {
         @Argument()
