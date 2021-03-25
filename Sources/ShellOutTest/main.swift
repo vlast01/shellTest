@@ -10,9 +10,12 @@ extension Command {
         @Argument()
         var commitName: String
         
+        @Option(wrappedValue: "master")
+        var branch: String
+        
         func run() throws {
             try shellOut(to: .gitCommit(message: commitName))
-            try shellOut(to: "git push origin master")
+            try shellOut(to: "git push origin \(branch)")
         }
     }
 }
